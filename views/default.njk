@@ -8,7 +8,7 @@
     </head>
     <body>
         <header>
-            <a href="/">
+            <a href="{{baseUrl}}/">
                 <h1>
                     {{siteTitle}}
                 </h1>
@@ -32,6 +32,10 @@
             <p>
                 version: {{version if version else "*.*.*"}}
             </p>
+
+            <p>
+                <a href="/">Instructions</a>
+            </p>
         </footer>
     </body>
 
@@ -39,8 +43,8 @@
         var MT_CONFIG = {
             clientId: 'S)xTY*SWVE7va\"Sv7W;yKf518LhA&jd4)%;Ln02I',
             clientKey: 'L8:PYm?meMVdhaUhcX)diszWpB7(5*bBEbyfuYn5$j6kigE4)ssBz:rpww+u49tehi\"yTIIQLj%nrGB)Jzct$%SNbq$i*w5)%b7Cwm&KMJc)1Nu*Web9q&oSBqqXg)km',
-            subDomain: '{{endpoint if endpoint else 'cousteau-r45kxk'}}',
+            subDomain: '{{endpoint}}',
         };
     </script>
-    <script src="https://mtproduction.control.marianatek.com/lib/mariana_web_components.js?semver={{version if version else "*.*.*"}}" charset="utf-8"></script>
+    <script src="https://mtproduction.control.marianatek.com/lib/mariana_web_components.js?semver={{version}}" charset="utf-8"></script>
 </html>

@@ -7,9 +7,8 @@ const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const sassMiddleware = require('node-sass-middleware');
 
-const index = require('./routes/demo/index');
-const endpoint = require('./routes/endpoint');
-const version = require('./routes/version');
+const index = require('./routes/index');
+const indexDemo = require('./routes/demo/index');
 
 const app = express();
 const isDev = app.get('env') === 'development';
@@ -36,9 +35,29 @@ app.use(sassMiddleware({
 }));
 app.use(express.static(path.join(__dirname, 'public')));
 
+// Router: Endpoint
+
+const endpointRouter = express.Router({mergeParams: true});
+
+endpointRouter.get('/:endpoint', function(req, res, next) {
+  res.render('demo/index', { endpoint: req.params.endpoint });
+});
+
+const setLocals = function (req, res, next) {
+    res.locals.baseUrl = req.baseUrl;
+    res.locals.endpoint = req.params.endpoint ? req.params.endpoint : 'cousteau-r45kxk';
+    res.locals.siteTitle = "Ohami Yoga";
+    res.locals.version = req.params.version ? req.params.version : '*.*.*';
+
+    next()
+};
+
+
+app.use(['/default/'], setLocals, indexDemo);
+app.use(['/endpoint/:endpoint'], setLocals, indexDemo);
+app.use(['/version/:version'], setLocals, indexDemo);
+app.use(['/:endpoint/:version'], setLocals, indexDemo);
 app.use('/', index);
-app.use('/endpoint/', endpoint);
-app.use('/version/', version);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
