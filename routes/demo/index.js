@@ -1,8 +1,9 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
 
-router.get('/', function(req, res, next) {
-  res.render('demo/index', {pageTitle: "Home"});
+const router = express.Router();
+
+router.get('/', (req, res) => {
+    res.render('demo/index', {pageTitle: 'Home'});
 });
 
 router.use('/login', require('./login'));

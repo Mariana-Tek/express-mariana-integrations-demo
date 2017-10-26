@@ -5,7 +5,7 @@
   "scripts": {
     "serve": "nodemon tasks/serve.js",
     "start": "node ./bin/www",
-    "test": "eslint app.js ./**/*.js"
+    "test": "eslint ./"
   },
   "dependencies": {
     "body-parser": "~1.18.2",
@@ -20,6 +20,9 @@
   },
   "devDependencies": {
     "eslint": "^4.9.0",
+    "eslint-config-airbnb-base": "^11.3.2",
+    "eslint-config-mariana": "git+ssh://git@github.com/Mariana-Tek/eslint-config-mariana.git#1.0.1",
+    "eslint-plugin-import": "^2.8.0",
     "nodemon": "^1.12.1"
   }
 }
