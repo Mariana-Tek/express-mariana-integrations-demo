@@ -4,6 +4,8 @@
 
 ## Instructions
 
+_from root directory_
+
 1. `yarn install`
-* `yarn start`
+* `yarn serve`
 * browse to [http://localhost:3000/](http://localhost:3000/)
