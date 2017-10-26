@@ -3,12 +3,36 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title>{{title}}</title>
+        <title>{{siteTitle}} | {{pageTitle}}</title>
         <link rel="stylesheet" href="/stylesheets/style.css">
     </head>
     <body>
-        {% block content %}
-        {% endblock %}
+        <header>
+            <a href="/">
+                <h1>
+                    {{siteTitle}}
+                </h1>
+            </a>
+
+            {% include "partials/nav-main.njk" %}
+        </header>
+
+        {% if pageTitle %}
+            <h2>
+                {{pageTitle}}
+            </h2>
+        {% endif %}
+
+        {% block content %}{% endblock %}
+
+        <footer>
+            <p>
+                endpoint: {{endpoint if endpoint else 'cousteau-r45kxk'}}
+            </p>
+            <p>
+                version: {{version if version else "*.*.*"}}
+            </p>
+        </footer>
     </body>
 
     <script>
