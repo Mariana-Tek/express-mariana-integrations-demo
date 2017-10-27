@@ -7,7 +7,7 @@ router.get('/', (req, res) => {
 });
 
 router.use('/login', require('./login'));
-router.use('/schedule', require('./schedule'));
+router.use('/location', require('./location'));
 router.use('/store', require('./store'));
 
 module.exports = router;
