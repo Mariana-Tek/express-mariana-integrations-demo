@@ -1,13 +1,35 @@
 <nav>
     <ul>
         <li>
-            <a href="{{baseUrl}}/login">Login</a>
+            Locations
+
+            <ul>
+                {% for location in locations %}
+                    <li>
+                        <a href="{{baseUrl}}/location/{{location.regionId}}/{{location.locationId}}">
+                            {{ location.name }}
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
         </li>
+
         <li>
-            <a href="{{baseUrl}}/schedule">Schedule</a>
+            <a href="{{baseUrl}}/login">
+                Login
+            </a>
         </li>
+
         <li>
-            <a href="{{baseUrl}}/store">Store</a>
+            <a href="{{baseUrl}}/schedule">
+                Schedule
+            </a>
+        </li>
+
+        <li>
+            <a href="{{baseUrl}}/store">
+                Store
+            </a>
         </li>
     </ul>
 </nav>

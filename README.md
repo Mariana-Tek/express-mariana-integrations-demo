@@ -6,6 +6,6 @@
 
 _from root directory_
 
-1. `yarn install`
-* `yarn serve`
+1. `npm i`
+* `npm run serve`
 * browse to [http://localhost:3000/](http://localhost:3000/)

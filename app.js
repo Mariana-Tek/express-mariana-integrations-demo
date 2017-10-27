@@ -5,6 +5,7 @@ const path = require('path');
 const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
+const makeRequests = require('./middleware/make-requests');
 const sassMiddleware = require('node-sass-middleware');
 const setLocals = require('./middleware/set-locals');
 
@@ -43,7 +44,7 @@ const demoMountPaths = [
     '/:endpoint/:version'
 ];
 
-app.use([demoMountPaths], setLocals, indexDemo);
+app.use([demoMountPaths], setLocals, makeRequests, indexDemo);
 app.use('/', index);
 
 // catch 404 and forward to error handler
