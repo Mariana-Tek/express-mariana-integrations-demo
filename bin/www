@@ -5,6 +5,7 @@
  */
 
 var app = require('../app');
+var environment = process.env.NODE_ENV;
 var debug = require('debug')('express-mariana-bindings-demo:server');
 var http = require('http');
 
@@ -18,6 +19,8 @@ app.set('port', port);
 /**
  * Create HTTP server.
  */
+
+console.log(environment);
 
 var server = http.createServer(app);
 
