@@ -8,6 +8,7 @@ router.get('/', (req, res) => {
 
 router.use('/login', require('./login'));
 router.use('/location', require('./location'));
+router.use('/register', require('./register'));
 router.use('/store', require('./store'));
 
 module.exports = router;
