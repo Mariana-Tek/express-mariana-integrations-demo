@@ -1,2 +1,8 @@
 node_modules
 public/stylesheets/style.css*
+
+localhost.cert
+localhost.key
+
+.npmrc
+.npm-debug.log

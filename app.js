@@ -37,8 +37,6 @@ app.use(sassMiddleware({
 }));
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.locals.nodeEnv = process.env.NODE_ENV;
-
 const demoMountPaths = [
     '/default/',
     '/endpoint/:endpoint',

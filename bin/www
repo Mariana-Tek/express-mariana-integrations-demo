@@ -1,13 +1,16 @@
 #!/usr/bin/env node
+/* eslint-disable */
 
 /**
  * Module dependencies.
  */
 
 var app = require('../app');
-var environment = process.env.NODE_ENV;
 var debug = require('debug')('express-mariana-bindings-demo:server');
+var environment = process.env.NODE_ENV;
+var fs = require('fs');
 var http = require('http');
+var https = require('https');
 
 /**
  * Get port from environment and store in Express.
@@ -20,9 +23,14 @@ app.set('port', port);
  * Create HTTP server.
  */
 
-console.log(environment);
+var httpsOptions = {
+    key: (environment === 'production') ? null : fs.readFileSync( './localhost.key' ),
+    cert: (environment === 'production') ? null : fs.readFileSync( './localhost.cert' ),
+    requestCert: false,
+    rejectUnauthorized: false
+};
 
-var server = http.createServer(app);
+var server = (environment === 'production') ? http.createServer(app) : https.createServer(httpsOptions, app);
 
 /**
  * Listen on provided port, on all network interfaces.
