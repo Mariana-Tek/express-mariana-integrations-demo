@@ -23,12 +23,15 @@
                 <li>
                     <a href="/endpoint/demo-n9c5fm/">Endpoint Example</a> (<code>/endpoint/[endpoint]</code>)
                 </li>
-                <li>
-                    <a href="/version/2.0.45/">Version Example</a> (<code>/version/[version]</code>)
-                </li>
-                <li>
-                    <a href="/demo-n9c5fm/2.0.45/">Endpoint and Version Example</a> (<code>/[endpoint]/[version]</code>)
-                </li>
+
+                {% if componentsNotServedLocally %}
+                    <li>
+                        <a href="/version/2.0.45/">Version Example</a> (<code>/version/[version]</code>)
+                    </li>
+                    <li>
+                        <a href="/demo-n9c5fm/2.0.45/">Endpoint and Version Example</a> (<code>/[endpoint]/[version]</code>)
+                    </li>
+                {% endif %}
             </ul>
         </article>
     </body>

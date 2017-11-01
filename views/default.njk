@@ -42,9 +42,12 @@
             <p>
                 endpoint: {{endpoint if endpoint else 'cousteau-r45kxk'}}
             </p>
-            <p>
-                version: {{version if version else "*.*.*"}}
-            </p>
+
+            {% if componentsNotServedLocally %}
+                <p>
+                    version: {{version if version else "*.*.*"}}
+                </p>
+            {% endif %}
 
             <p>
                 <a href="/">Instructions</a>
@@ -59,5 +62,10 @@
             subDomain: '{{endpoint}}',
         };
     </script>
-    <script src="https://mtproduction.control.marianatek.com/lib/mariana_web_components.js?semver={{version}}" charset="utf-8"></script>
+
+    {% if componentsServedLocally %}
+        <script src="https://localhost:4200/assets/app.js" charset="utf-8"></script>
+    {% else %}
+        <script src="https://mtproduction.control.marianatek.com/lib/mariana_web_components.js?semver={{version}}" charset="utf-8"></script>
+    {% endif %}
 </html>

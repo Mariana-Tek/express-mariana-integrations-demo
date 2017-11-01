@@ -1,19 +1,21 @@
+const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
 const express = require('express');
 const expressNunjucks = require('express-nunjucks');
-const path = require('path');
-// const favicon = require('serve-favicon');
+const favicon = require('serve-favicon');
 const logger = require('morgan');
-const cookieParser = require('cookie-parser');
-const bodyParser = require('body-parser');
 const makeRequests = require('./middleware/make-requests');
+const path = require('path');
 const sassMiddleware = require('node-sass-middleware');
 const setLocals = require('./middleware/set-locals');
 
+// routes
 const index = require('./routes/index');
 const indexDemo = require('./routes/demo/index');
 
 const app = express();
 const isDev = app.get('env') === 'development';
+const componentsServedLocally = process.argv[2] === 'local';
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -24,8 +26,7 @@ const njk = expressNunjucks(app, { // eslint-disable-line no-unused-vars
     noCache: isDev
 });
 
-// uncomment after placing your favicon in /public
-// app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -37,12 +38,19 @@ app.use(sassMiddleware({
 }));
 app.use(express.static(path.join(__dirname, 'public')));
 
-const demoMountPaths = [
+const localScriptMountPaths = [
+    '/default/',
+    '/endpoint/:endpoint'
+];
+
+const remoteScriptMountPaths = [
     '/default/',
     '/endpoint/:endpoint',
     '/version/:version',
     '/:endpoint/:version'
 ];
+
+const demoMountPaths = componentsServedLocally ? localScriptMountPaths : remoteScriptMountPaths;
 
 app.use([demoMountPaths], setLocals, makeRequests, indexDemo);
 app.use('/', index);
@@ -65,5 +73,8 @@ app.use((err, req, res) => {
     res.status(err.status || 500);
     res.render('error');
 });
+
+app.locals.componentsServedLocally = componentsServedLocally;
+app.locals.componentsNotServedLocally = !componentsServedLocally;
 
 module.exports = app;
