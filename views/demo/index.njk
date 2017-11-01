@@ -1,5 +1,18 @@
 {% extends "default.njk" %}
 
 {% block content %}
-    Welcome!
+    <p>
+        Welcome!
+    </p>
+
+    <aside>
+        <p>
+            Buy a thing right now!
+        </p>
+
+        <div class="mariana-ui-button-binding"
+             data-button-text="Buy Now"
+             data-mariana-redirect-url="{{baseUrl}}/cart/"
+             data-mariana-product-id="3156"></div>
+    </aside>
 {% endblock %}

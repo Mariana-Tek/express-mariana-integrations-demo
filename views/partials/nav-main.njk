@@ -1,9 +1,11 @@
 <nav>
     <ul>
         <li>
-            Locations
+            <a href="{{baseUrl}}/locations/">
+                Locations
+            </a>
 
-            <ul>
+            {# <ul>
                 {% for location in locations %}
                     <li>
                         <a href="{{baseUrl}}/location/{{location.regionId}}/{{location.locationId}}/">
@@ -11,7 +13,7 @@
                         </a>
                     </li>
                 {% endfor %}
-            </ul>
+            </ul> #}
         </li>
 
         <li>

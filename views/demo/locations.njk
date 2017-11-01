@@ -1,0 +1,13 @@
+{% extends "default.njk" %}
+
+{% block content %}
+    <ul>
+        {% for location in locations %}
+            <li>
+                <a href="{{baseUrl}}/location/{{location.regionId}}/{{location.locationId}}/">
+                    {{ location.name }}
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}
