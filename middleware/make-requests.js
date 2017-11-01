@@ -1,4 +1,5 @@
 const reqProm = require('request-promise');
+const sortBy = require('lodash.sortby');
 
 module.exports = function (req, res, next) {
     // https://cousteau-r45kxk.marianatek.com/api/tenants
@@ -31,7 +32,7 @@ module.exports = function (req, res, next) {
                 };
             });
 
-            res.locals.locations = locationsInfo;
+            res.locals.locations = sortBy(locationsInfo, ['name']);
         })
         .catch(error => {
             console.error(error);

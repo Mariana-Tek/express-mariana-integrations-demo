@@ -17,6 +17,7 @@
     "debug": "~2.6.9",
     "express": "~4.15.5",
     "express-nunjucks": "^2.2.3",
+    "lodash.sortby": "^4.7.0",
     "morgan": "~1.9.0",
     "node-sass-middleware": "0.9.8",
     "nunjucks": "^3.0.1",
