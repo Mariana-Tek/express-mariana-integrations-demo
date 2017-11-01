@@ -7,8 +7,8 @@
 In order to run this application locally clone this repository and run the following commands in order from the root directory of the cloned repository.
 
 1. `npm i`
-* `openssl genrsa -out localhost.key 2048`
-* `openssl req -new -x509 -key localhost.key -out localhost.cert -days 3650 -subj /CN=localhost`
+2. `openssl genrsa -out localhost.key 2048`
+3. `openssl req -new -x509 -key localhost.key -out localhost.cert -days 3650 -subj /CN=localhost`
 
 [__source__: [Self-Signed, Trusted Certificates for Node.js & Express.js](https://www.kevinleary.net/self-signed-trusted-certificates-node-js-express-js/)]
 
@@ -17,7 +17,7 @@ In order to run this application locally clone this repository and run the follo
 Once you have followed the [setup](#setup) Instructions, run these commands to view and work on the demo site locally.
 
 1. `npm run serve`
-* browse to [http://localhost:3000/](http://localhost:3000/)
+2. browse to [http://localhost:3000/](http://localhost:3000/)
 
 ### w/Local Web Components
 
