@@ -65,6 +65,8 @@
 
     {% if componentsServedLocally %}
         <script src="https://localhost:4200/assets/app.js" charset="utf-8"></script>
+    {% elif branch%}
+        <script src="https://mtdev.control.marianatek.com/lib/mariana_web_components.js?branch={{branch}}" charset="utf-8"></script>
     {% else %}
         <script src="https://mtdev.control.marianatek.com/lib/mariana_web_components.js?semver={{version}}" charset="utf-8"></script>
     {% endif %}
