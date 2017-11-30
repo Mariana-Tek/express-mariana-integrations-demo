@@ -45,9 +45,10 @@ const localScriptMountPaths = [
 
 const remoteScriptMountPaths = [
     '/default/',
+    '/branch/:branch',
     '/endpoint/:endpoint',
     '/version/:version',
-    '/:endpoint/:version'
+    '/:endpoint/:versionOrBranch'
 ];
 
 const demoMountPaths = componentsServedLocally ? localScriptMountPaths : remoteScriptMountPaths;
