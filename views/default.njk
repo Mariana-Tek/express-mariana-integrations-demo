@@ -3,7 +3,7 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title>{{siteTitle}} | {{pageTitle}}</title>
+        <title>{{siteTitle}}{{" | " if pageTitle}}{{pageTitle}}</title>
 
         {# favicon suite
 
@@ -22,6 +22,8 @@
     <body>
         <header>
             <a href="{{baseUrl}}/">
+                <img src="{{adminSidebarLogo}}" alt="{{siteTitle}} logo">
+
                 <h1>
                     {{siteTitle}}
                 </h1>

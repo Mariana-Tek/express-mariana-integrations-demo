@@ -6,3 +6,4 @@ localhost.key
 
 .npmrc
 .npm-debug.*
+nbm-debug*
