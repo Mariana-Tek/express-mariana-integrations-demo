@@ -1,8 +1,12 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-}
+@import 'global/functions/color';
 
-a {
-  color: #00B7FF;
-}
+@import 'global/vars/layout';
+@import 'global/vars/theme';
+
+@import 'base';
+
+@import 'utils/visually-hidden';
+
+@import 'components/footer';
+@import 'components/header';
+@import 'components/nav';

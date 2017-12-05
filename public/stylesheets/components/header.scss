@@ -1,0 +1,22 @@
+.header {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    padding: .5em;
+    border-bottom: $border-default;
+}
+
+.header__branding {
+    align-items: center;
+    display: flex;
+}
+
+.header__logo {
+    height: 2em;
+    margin-right: .5em;
+    width: auto;
+}
+
+.header__name {
+    font-size: 2em;
+}
