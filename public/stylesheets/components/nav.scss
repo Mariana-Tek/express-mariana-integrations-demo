@@ -1,0 +1,16 @@
+.nav__item {
+    padding: .5em;
+}
+
+.nav__list {
+    align-items: center;
+    display: flex;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav__title {
+    color: black;
+    font-weight: bold;
+}
