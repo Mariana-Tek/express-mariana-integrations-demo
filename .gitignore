@@ -1,5 +1,5 @@
 node_modules
-public/stylesheets/style.css*
+public/stylesheets/*.css*
 
 localhost.cert
 localhost.key
