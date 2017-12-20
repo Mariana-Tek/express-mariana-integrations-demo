@@ -17,7 +17,17 @@
         #}
 
         {# styles #}
-        <link rel="stylesheet" href="/stylesheets/style.css">
+        <link id="siteStyles" rel="stylesheet" href="/stylesheets/style.css">
+
+        {% if componentsServedLocally %}
+            <link id="bindingStyles" rel="stylesheet" href="https://localhost:4200/assets/app.css">
+        {% elif branch%}
+            <link id="bindingStyles" rel="stylesheet" href="https://mtdev.control.marianatek.com/lib/mariana_web_components.css?branch={{branch}}">
+        {% else %}
+            <link id="bindingStyles" rel="stylesheet" href="https://mtdev.control.marianatek.com/lib/mariana_web_components.css?branch={{version}}">
+        {% endif %}
+
+        <link id="overrideStyles" rel="stylesheet" href="/stylesheets/override.css">
     </head>
     <body>
         <header class="header">
@@ -43,21 +53,44 @@
         </main>
 
         <footer class="footer">
-            <p>
-                endpoint: {{endpoint if endpoint else 'cousteau-r45kxk'}}
-            </p>
-
-            {% if componentsNotServedLocally %}
+            <div class="">
                 <p>
-                    version: {{version if version else "*.*.*"}}
+                    endpoint: {{endpoint if endpoint else 'cousteau-r45kxk'}}
                 </p>
-            {% endif %}
 
-            <p>
-                <a href="/">Instructions</a>
-            </p>
+                {% if componentsNotServedLocally %}
+                    <p>
+                        version: {{version if version else "*.*.*"}}
+                    </p>
+                {% endif %}
+
+                <p>
+                    <a href="/">Instructions</a>
+                </p>
+            </div>
+
+            <fieldset>
+                <legend>
+                    styles rendered:
+                </legend>
+
+                <div>
+                    <input type="checkbox" name="stylesheets" value="siteStyles" checked>
+                    <label for="subscribeNews">site styles</label>
+                </div>
+                <div>
+                    <input type="checkbox" name="stylesheets" value="bindingStyles" checked>
+                    <label for="subscribeNews">binding styles</label>
+                </div>
+                <div>
+                    <input type="checkbox" name="stylesheets" value="overrideStyles" checked>
+                    <label for="subscribeNews">binding override styles</label>
+                </div>
+            </fieldset>
         </footer>
     </body>
+
+    <script src="/javascripts/main.js" charset="utf-8"></script>
 
     <script>
         var MT_CONFIG = {
