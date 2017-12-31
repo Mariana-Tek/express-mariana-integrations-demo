@@ -1,3 +1,22 @@
+@import 'global/vars/theme';
+
+$mt-colors: $colors;
+
 .MT_component {
     font-family: 'Lato';
+}
+
+@each $color-key, $color-value in $mt-colors {
+    .MT_bg--#{$color-key} {
+        background-color: $color-value;
+    }
+
+    .MT_border--#{$color-key} {
+        border-color: $color-value;
+    }
+
+    .MT_color--#{$color-key} {
+        color: $color-value;
+        fill: $color-value;
+    }
 }

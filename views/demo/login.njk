@@ -1,10 +1,7 @@
 {% extends "default.njk" %}
 
 {% block content %}
-    <p>
-        Don't have an account? <a href="{{baseUrl}}/register/">Register here</a>.
-    </p>
-
     <div class="mariana-login-form-binding"
-        data-mariana-auth-redirect-url="{{baseUrl}}/account/"></div>
+        data-mariana-auth-redirect-url="{{baseUrl}}/account/"
+        data-mariana-auth-register-url="{{baseUrl}}/register/"></div>
 {% endblock %}
