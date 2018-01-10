@@ -8,7 +8,7 @@ body {
         ". main ."
         ". footer ."
     ;
-    grid-template-columns: minmax(.5em, auto) minmax(max-content, 65em) minmax(.5em, auto);
+    grid-template-columns: minmax(.5em, auto) minmax(min-content, 65em) minmax(.5em, auto);
     grid-template-rows: 3em;
     margin: 0;
 }
