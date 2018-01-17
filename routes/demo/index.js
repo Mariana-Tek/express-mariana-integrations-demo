@@ -9,10 +9,10 @@ router.get('/', (req, res) => {
 router.use('/account', require('./account'));
 router.use('/cart', require('./cart'));
 router.use('/login', require('./login'));
-router.use('/location', require('./location'));
 router.use('/locations', require('./locations'));
+router.use('/purchase', require('./purchase'));
 router.use('/register', require('./register'));
 router.use('/reset', require('./reset'));
-router.use('/store', require('./store'));
+router.use('/schedule', require('./schedule'));
 
 module.exports = router;

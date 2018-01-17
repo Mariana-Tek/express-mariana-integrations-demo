@@ -1,13 +1,35 @@
 {% extends "default.njk" %}
 
 {% block content %}
-    <ul>
-        {% for location in locations %}
-            <li>
-                <a href="{{baseUrl}}/location/{{location.regionId}}/{{location.locationId}}/">
-                    {{ location.name }}
-                </a>
-            </li>
-        {% endfor %}
-    </ul>
+    <div>
+        <h3>
+            Register
+        </h3>
+
+        <ul>
+            {% for location in locations %}
+                <li>
+                    <a href="{{baseUrl}}/register/{{location.regionId}}/{{location.locationId}}/">
+                        {{ location.name }}
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <div>
+        <h3>
+            Purchase
+        </h3>
+
+        <ul>
+            {% for location in locations %}
+                <li>
+                    <a href="{{baseUrl}}/purchase/{{location.locationId}}/">
+                        {{ location.name }}
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
 {% endblock %}

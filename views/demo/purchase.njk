@@ -2,8 +2,9 @@
 
 {% block content %}
     <div class="mariana-product-buy-list-binding"
+        data-mariana-buy-redirect="{{baseUrl}}/cart/{{locationId}}/"
         data-mariana-giftcard="true"
-        data-mariana-location-id="9608"
+        data-mariana-location-id="{{locationId}}"
         data-mariana-login-redirect-url="{{baseUrl}}/login/"
     ></div>
 {% endblock %}
