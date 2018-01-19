@@ -3,13 +3,13 @@
 {% block content %}
     <div>
         <h3>
-            Register
+            Schedule
         </h3>
 
         <ul>
             {% for location in locations %}
                 <li>
-                    <a href="{{baseUrl}}/register/{{location.regionId}}/{{location.locationId}}/">
+                    <a href="{{baseUrl}}/schedule/{{location.regionId}}/{{location.locationId}}/">
                         {{ location.name }}
                     </a>
                 </li>
