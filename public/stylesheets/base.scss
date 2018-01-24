@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Lato:400,400i,700');
 
 body {
+    background-color: #F6F5F6;
     display: grid;
     font-family: 'Lato', sans-serif;
     grid-template-areas:
@@ -13,13 +14,14 @@ body {
     margin: 0;
 }
 
-header {
+.header {
+    background-color: white;
     grid-area: header;
 }
 
 main {
     grid-area: main;
-    margin: 1em 0 4em;
+    margin: 3em 0 4em;
 }
 
 footer {
