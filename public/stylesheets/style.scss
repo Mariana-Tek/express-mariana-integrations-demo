@@ -7,7 +7,15 @@
 
 @import 'utils/visually-hidden';
 
+@import 'layout/locations';
+
+@import 'theme/color';
+@import 'theme/typography';
+
 @import 'components/footer';
 @import 'components/header';
+@import 'components/location-card';
+@import 'components/page-header';
 @import 'components/nav';
 @import 'components/nav-account';
+@import 'components/site-meta';

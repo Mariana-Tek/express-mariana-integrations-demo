@@ -1,6 +1,8 @@
 .header {
     align-items: center;
+    background-color: color(inverse);
     display: flex;
+    grid-area: header;
     justify-content: space-between;
     padding: .5em;
     border-bottom: $border-default;

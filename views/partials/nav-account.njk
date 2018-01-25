@@ -1,13 +1,22 @@
 <nav class="nav-account">
-    <a class="nav-account__item" href="{{baseUrl}}/account/">
+    <a
+        class="nav-account__item{{' nav-account__item--active' if isAccountPage}}"
+        href="{{baseUrl}}/account/"
+    >
         Account
     </a>
 
-    <a class="nav-account__item" href="{{baseUrl}}/account/classes/">
+    <a
+        class="nav-account__item{{' nav-account__item--active' if isClassesPage}}"
+        href="{{baseUrl}}/account/classes/"
+    >
         Classes
     </a>
 
-    <a class="nav-account__item" href="{{baseUrl}}/account/purchases/">
+    <a
+        class="nav-account__item{{' nav-account__item--active' if isPurchasesPage}}"
+        href="{{baseUrl}}/account/purchases/"
+    >
         Purchases
     </a>
 </nav>

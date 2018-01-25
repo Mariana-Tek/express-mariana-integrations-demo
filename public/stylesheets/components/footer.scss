@@ -1,4 +1,11 @@
 .footer {
-    background-color: color(lowlight);
-    padding: .5em;
+    display: flex;
+    align-items: flex-end;
+    flex-direction: column;
+    grid-area: footer;
+    margin-bottom: 2em;
+
+    &__button {
+        margin-bottom: 1em;
+    }
 }

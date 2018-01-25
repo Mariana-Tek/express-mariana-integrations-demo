@@ -1,0 +1,21 @@
+.site-meta {
+    background: color(inverse);
+    border: 1px solid color(secondary);
+    border-radius: .5em;
+    padding: 1em;
+    margin-bottom: 2em;
+    width: 20em;
+
+    &__values {
+        margin: 1em 0;
+    }
+
+    &__style-options {
+        background-color: color(secondary);
+        color: color(inverse);
+        border: none;
+        border-radius: .5em;
+        margin: 0;
+        padding: .5em;
+    }
+}

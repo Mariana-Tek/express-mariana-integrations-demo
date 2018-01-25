@@ -1,0 +1,20 @@
+.L_locations {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-auto-rows: 1fr;
+    grid-gap: 1em;
+    grid-template-columns: repeat(2, 1fr);
+
+    @media #{$mq-sc-sm} {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    @media #{$mq-sc-md} {
+        grid-template-columns: repeat(4, 1fr);
+    }
+    @media #{$mq-sc-lg} {
+        grid-template-columns: repeat(5, 1fr);
+    }
+}

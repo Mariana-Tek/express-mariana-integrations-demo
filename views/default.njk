@@ -45,49 +45,92 @@
 
         <main>
             {% if pageTitle %}
-                <h2>
-                    {{pageTitle}}
-                </h2>
+                <header class="page-header">
+                    <h1>
+                        {{pageTitle}}
+                    </h1>
+                </header>
             {% endif %}
 
             {% block content %}{% endblock %}
         </main>
 
         <footer class="footer">
-            <div class="">
-                <p>
-                    endpoint: {{endpoint if endpoint else 'cousteau-r45kxk'}}
-                </p>
+            <button type="button" class="footer__button" id='toggle-meta-button'>
+                <span id='toggle-meta-view-text'>
+                    View
+                </span>
 
-                {% if componentsNotServedLocally %}
-                    <p>
-                        version: {{version if version else "*.*.*"}}
+                <span id='toggle-meta-hide-text' hidden>
+                    Hide
+                </span>
+
+                Site Meta
+            </button>
+
+            <div class="site-meta" id="site-meta" hidden>
+                <div class="">
+                    <p class="type--note">
+                        These values and checkboxes are a convenience for engineers and experienced testers. If you're not sure what these are don't worry about it and simply close this section again!
                     </p>
-                {% endif %}
 
-                <p>
-                    <a href="/">Instructions</a>
-                </p>
+                    <p class="type--note">
+                        <a href="/">View instructions for using the demonstration site</a>
+                    </p>
+
+                    <table class="site-meta__values">
+                        {% if componentsNotServedLocally %}
+                            {% if branch %}
+                                <tr>
+                                    <td>
+                                        <strong>branch</strong>
+                                    </td>
+                                    <td>
+                                        {{branch}}
+                                    </td>
+                                </tr>
+                            {% else %}
+                                <tr>
+                                    <td>
+                                        <strong>version</strong>
+                                    </td>
+                                    <td>
+                                         <code>{{version if version else "*.*.*"}}</code>
+                                    </td>
+                                </tr>
+                            {% endif %}
+                        {% endif %}
+
+                        <tr>
+                            <td>
+                                <strong>endpoint</strong>
+                            </td>
+                            <td>
+                                {{endpoint if endpoint else 'cousteau-r45kxk'}}
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+
+                <fieldset class="site-meta__style-options">
+                    <h4 class="site-meta__style-header">
+                        Styles Rendered:
+                    </h4>
+
+                    <div>
+                        <input type="checkbox" name="stylesheets" value="siteStyles" checked>
+                        <label for="subscribeNews">site styles</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" name="stylesheets" value="bindingStyles" checked>
+                        <label for="subscribeNews">binding styles</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" name="stylesheets" value="overrideStyles" checked>
+                        <label for="subscribeNews">binding override styles</label>
+                    </div>
+                </fieldset>
             </div>
-
-            <fieldset>
-                <legend>
-                    styles rendered:
-                </legend>
-
-                <div>
-                    <input type="checkbox" name="stylesheets" value="siteStyles" checked>
-                    <label for="subscribeNews">site styles</label>
-                </div>
-                <div>
-                    <input type="checkbox" name="stylesheets" value="bindingStyles" checked>
-                    <label for="subscribeNews">binding styles</label>
-                </div>
-                <div>
-                    <input type="checkbox" name="stylesheets" value="overrideStyles" checked>
-                    <label for="subscribeNews">binding override styles</label>
-                </div>
-            </fieldset>
         </footer>
     </body>
 

@@ -1,0 +1,23 @@
+.location-card {
+    background-color: color(inverse);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 1em;
+    text-align: center;
+    border-radius: .5em;
+
+    &__title {
+        margin-bottom: 1em;
+    }
+
+    &__links {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    &__link {
+        padding: .25em;
+    }
+}

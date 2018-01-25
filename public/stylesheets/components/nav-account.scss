@@ -4,7 +4,21 @@
 }
 
 .nav-account__item {
-    font-size: 30px;
+    color: color(text);
+    font-size: 1em;
     font-weight: 700;
-    padding-right: 15px;
+    text-decoration: none;
+
+    @media #{$mq-sc-sm} {
+        font-size: 1.5em;
+    }
+
+    & + & {
+        margin-left: 1em;
+    }
+
+    &--active {
+        border-left: .25em solid color(primary);
+        padding-left: .5em;
+    }
 }

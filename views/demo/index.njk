@@ -1,18 +1,33 @@
 {% extends "default.njk" %}
 
 {% block content %}
-    <p>
-        Welcome!
-    </p>
+    <header class="page-header">
+        <h1 class="color--primary">
+            Welcome to {{siteTitle}}!
+        </h1>
 
-    <aside>
-        <p>
-            Buy a thing right now!
-        </p>
+        <h2 class="color--lowlight">
+            Pick a location to book a class or purchase passes
+        </h2>
+    </header>
 
-        <div class="mariana-ui-button-binding"
-             data-button-text="Buy Now"
-             data-mariana-redirect-url="{{baseUrl}}/cart/"
-             data-mariana-product-id="3156"></div>
-    </aside>
+    <ul class="L_locations">
+        {% for location in locations %}
+            <li class="location-card">
+                <h1 class="type--h2 location-card__title">
+                    {{ location.name }}
+                </h1>
+
+                <div class="location-card__links">
+                    <a class="location-card__link" href="{{baseUrl}}/schedule/{{location.regionId}}/{{location.locationId}}/">
+                        Book a class
+                    </a>
+
+                    <a class="location-card__link" href="{{baseUrl}}/purchase/{{location.locationId}}/">
+                        Purchase passes
+                    </a>
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
 {% endblock %}

@@ -14,16 +14,36 @@ body {
     margin: 0;
 }
 
-.header {
-    background-color: white;
-    grid-area: header;
-}
-
 main {
     grid-area: main;
     margin: 3em 0 4em;
 }
 
-footer {
-    grid-area: footer;
+// type
+
+a {
+    color: color(secondary);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+    margin-top: 0;
+    margin-bottom: .2em;
+}
+
+p + p {
+    margin-top: 1em;
+}
+
+// inputs
+
+button {
+    font-family: inherit;
+    border: none;
+    border-radius: .5em;
 }
