@@ -13,5 +13,6 @@ router.use('/purchase', require('./purchase'));
 router.use('/register', require('./register'));
 router.use('/reset', require('./reset'));
 router.use('/schedule', require('./schedule'));
+router.use('/terms-of-service', require('./terms-of-service'));
 
 module.exports = router;
