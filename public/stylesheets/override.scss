@@ -3,7 +3,7 @@
 $mt-colors: $colors;
 
 .MT_component {
-    font-family: 'Lato';
+    font-family: $font-family-default;
 }
 
 @each $color-key, $color-value in $mt-colors {

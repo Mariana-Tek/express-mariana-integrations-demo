@@ -1,9 +1,10 @@
 @import url('https://fonts.googleapis.com/css?family=Lato:400,400i,700');
 
 body {
-    background-color: #F6F5F6;
+    background-color: lighten(color(lowlight), 20);
+    color: color(text);
     display: grid;
-    font-family: 'Lato', sans-serif;
+    font-family: $font-family-default;
     grid-template-areas:
         "header header header"
         ". main ."
