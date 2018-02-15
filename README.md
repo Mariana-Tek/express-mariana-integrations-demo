@@ -1,6 +1,6 @@
 # express mariana bindings demo
 
-> an application for testing and demonstarting mariana web components
+> an application for testing and demonstrating mariana web components
 
 ## Setup
 
