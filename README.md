@@ -19,6 +19,6 @@ Once you have followed the [setup](#setup) Instructions, run these commands to v
 1. `npm run serve`
 2. browse to [https://localhost:3000/](https://localhost:3000/)
 
-### w/Local Web Components
+### w/Local Web Integrations
 
-If you would like to use this application to work on the [Mariana web components](https://github.com/Mariana-Tek/mariana-web-binding-framework/) follow the instructions on the [web components repository](https://github.com/Mariana-Tek/mariana-web-binding-framework/#running--development) to serve the project locally. Then instead of using the command `npm run serve` use `npm run serve:local`
+If you would like to use this application to work on the [Mariana Integrations](https://github.com/Mariana-Tek/ember-mariana-integrations/) follow the instructions on the [web integrations](https://github.com/Mariana-Tek/ember-mariana-integrations/#running--development) to serve the project locally. Then instead of using the command `npm run serve` use `npm run serve:local`
