@@ -1,11 +1,12 @@
 .header {
     align-items: center;
     background-color: color(inverse);
+    border-bottom: $border-default;
     display: flex;
     grid-area: header;
     justify-content: space-between;
     padding: .5em;
-    border-bottom: $border-default;
+    text-align: center;
 }
 
 .header__branding {

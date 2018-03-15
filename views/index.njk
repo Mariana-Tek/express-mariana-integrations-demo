@@ -16,28 +16,30 @@
         </header>
 
         <main>
-            <p>Welcome to the Mariana Web Integrations Demonstration site. The following patterns provide a range of options for testing and demonstrating Mariana's Web Components.</p>
+            <section class="instruction">
+                <p class="type--h3">Welcome to the Mariana Web Integrations Demonstration site. The following patterns provide a range of options for testing and demonstrating Mariana's Web Components.</p>
 
-            <ul>
-                <li>
-                    <a href="/default/">Default</a> (<code>/default/</code>)
-                </li>
-                <li>
-                    <a href="/endpoint/demo-n9c5fm/">Endpoint Example</a> (<code>/endpoint/[endpoint]</code>)
-                </li>
+                <ul>
+                    <li>
+                        <a href="/default/">Default</a> (<code>/default/</code>)
+                    </li>
+                    <li>
+                        <a href="/endpoint/demo-n9c5fm/">Endpoint Example</a> (<code>/endpoint/[endpoint]</code>)
+                    </li>
 
-                {% if componentsNotServedLocally %}
-                    <li>
-                        <a href="/branch/branchdeploys/">Branch Example</a> (<code>/branch/[branch]</code>). The branch name needs to be URL encoded; <code>feature%2FWEB-123-thingy</code> will work while <code>feature/WEB-123-thingy</code> will fail.
-                    </li>
-                    <li>
-                        <a href="/version/2.0.45/">Version Example</a> (<code>/version/[version]</code>)
-                    </li>
-                    <li>
-                        <a href="/demo-n9c5fm/2.0.45/">Endpoint and Version or Branch Example</a> (<code>/[endpoint]/[version or branch]</code>)
-                    </li>
-                {% endif %}
-            </ul>
+                    {% if componentsNotServedLocally %}
+                        <li>
+                            <a href="/branch/branchdeploys/">Branch Example</a> (<code>/branch/[branch]</code>). The branch name needs to be URL encoded; <code>feature%2FWEB-123-thingy</code> will work while <code>feature/WEB-123-thingy</code> will fail.
+                        </li>
+                        <li>
+                            <a href="/version/2.0.45/">Version Example</a> (<code>/version/[version]</code>)
+                        </li>
+                        <li>
+                            <a href="/demo-n9c5fm/2.0.45/">Endpoint and Version or Branch Example</a> (<code>/[endpoint]/[version or branch]</code>)
+                        </li>
+                    {% endif %}
+                </ul>
+            </section>
         </main>
     </body>
 </html>
