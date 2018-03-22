@@ -16,6 +16,7 @@ const indexDemo = require('./routes/demo/index');
 const app = express();
 const isDev = app.get('env') === 'development';
 const componentsServedLocally = process.argv[2] === 'local';
+const componentsServedOverNgrok = process.argv[2] === 'ngrok';
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -52,7 +53,8 @@ const remoteScriptMountPaths = [
     '/:endpoint/:versionOrBranch'
 ];
 
-const demoMountPaths = componentsServedLocally ? localScriptMountPaths : remoteScriptMountPaths;
+const demoMountPaths = (componentsServedLocally || componentsServedOverNgrok)
+    ? localScriptMountPaths : remoteScriptMountPaths;
 
 app.use([demoMountPaths], setLocals, makeRequests, indexDemo);
 app.use('/', index);
@@ -77,6 +79,7 @@ app.use((err, req, res) => {
 });
 
 app.locals.componentsServedLocally = componentsServedLocally;
-app.locals.componentsNotServedLocally = !componentsServedLocally;
+app.locals.componentsServedOverNgrok = componentsServedOverNgrok;
+app.locals.componentsNotServedLocally = !(componentsServedLocally || componentsServedOverNgrok);
 
 module.exports = app;

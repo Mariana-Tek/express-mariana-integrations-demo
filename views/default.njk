@@ -22,6 +22,8 @@
 
         {% if componentsServedLocally %}
             <link id="bindingStyles" rel="stylesheet" href="https://localhost:4200/assets/app.css">
+        {% elif componentsServedOverNgrok %}
+            <link id="bindingStyles" rel="stylesheet" href="https://mariana-integrations.ngrok.io/assets/app.css">
         {% elif branch%}
             <link id="bindingStyles" rel="stylesheet" href="https://mtdev.control.marianatek.com/lib/mariana_web_components.css?branch={{branch}}">
         {% else %}
@@ -146,6 +148,8 @@
 
     {% if componentsServedLocally %}
         <script src="https://localhost:4200/assets/app.js" charset="utf-8"></script>
+    {% elif componentsServedOverNgrok %}
+        <script src="https://mariana-integrations.ngrok.io/assets/app.js" charset="utf-8"></script>
     {% elif branch%}
         <script src="https://mtdev.control.marianatek.com/lib/mariana_web_components.js?branch={{branch}}" charset="utf-8"></script>
     {% else %}

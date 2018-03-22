@@ -22,3 +22,7 @@ Once you have followed the [setup](#setup) Instructions, run these commands to v
 ### w/Local Web Integrations
 
 If you would like to use this application to work on the [Mariana Integrations](https://github.com/Mariana-Tek/ember-mariana-integrations/) follow the instructions on the [web integrations](https://github.com/Mariana-Tek/ember-mariana-integrations/#running--development) to serve the project locally. Then instead of using the command `npm run serve` use `npm run serve:local`
+
+### w/For Device Testing
+
+If you would like to use this application to test on a device while serving the [Mariana Integrations](https://github.com/Mariana-Tek/ember-mariana-integrations/) locally. Then instead of using the command `npm run serve` use `npm run serve:ngrok`
