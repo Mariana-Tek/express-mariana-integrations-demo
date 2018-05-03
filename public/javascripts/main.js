@@ -12,6 +12,12 @@ function toggleSiteMeta() {
     viewMeta.hidden = !viewMeta.hidden;
 }
 
+function toggleNav() {
+    var nav = document.querySelector('#main-nav');
+
+    nav.classList.toggle('visually-hidden');
+}
+
 document.addEventListener('DOMContentLoaded', function() {
     var checkboxes = document.querySelectorAll('input[name="stylesheets"]');
     var checkboxIndex;
@@ -21,4 +27,5 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     document.querySelector('#toggle-meta-button').onclick = toggleSiteMeta;
+    document.querySelector('#toggle-nav-button').onclick = toggleNav;
 }, false);

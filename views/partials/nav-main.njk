@@ -1,4 +1,8 @@
-<nav class="nav">
+<button type="button" name="button" id="toggle-nav-button">
+    &#9776;
+</button>
+
+<nav class="nav visually-hidden" id="main-nav">
     <ul class="nav__list">
         {# <li class="nav__item">
             <a class="nav__title" href="{{baseUrl}}/locations/">
@@ -18,11 +22,14 @@
         #}
 
         <li class="nav__item">
-            <div class="mariana-who-am-i-binding"
-                data-mariana-account-redirect-url="{{baseUrl}}/account/"
-                data-mariana-login-redirect-url="{{baseUrl}}/login/"
-                data-mariana-signup-redirect-url="{{baseUrl}}/register/"
-                ></div>
+            <div class="mariana-auth-link-binding"
+            data-mariana-account-redirect-url="{{baseUrl}}/account/"
+            data-mariana-login-redirect-url="{{baseUrl}}/login/"
+            data-mariana-signup-redirect-url="{{baseUrl}}/register/"
+            ></div>
+        </li>
+        <li class="nav__item MT_authenticated-block">
+            <div class="mariana-logout-button-binding"></div>
         </li>
     </ul>
 </nav>

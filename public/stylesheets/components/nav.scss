@@ -1,10 +1,23 @@
+.nav {
+    background-color: color(inverse);
+    border: $border-default;
+    position: absolute;
+    right: 0;
+    text-align: left;
+    top: 100%;
+    width: 100%;
+
+    @media #{$mq-sc-sm} {
+        min-width: 15em;
+        width: auto;
+    }
+}
+
 .nav__item {
     padding: .5em;
 }
 
 .nav__list {
-    align-items: center;
-    display: flex;
     list-style-type: none;
     margin: 0;
     padding: 0;
