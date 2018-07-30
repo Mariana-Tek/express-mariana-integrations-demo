@@ -10,7 +10,7 @@ body {
         ". main ."
         ". footer ."
     ;
-    grid-template-columns: minmax(.5em, auto) minmax(calc(100vw - 1em), 65em) minmax(.5em, auto);
+    grid-template-columns: minmax(.5em, auto) minmax(auto, 60em) minmax(.5em, auto);
     grid-template-rows: 3em;
     margin: 0;
 }
