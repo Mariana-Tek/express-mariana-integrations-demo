@@ -17,6 +17,7 @@ const app = express();
 const isDev = app.get('env') === 'development';
 const componentsServedLocally = process.argv[2] === 'local';
 const componentsServedOverNgrok = process.argv[2] === 'ngrok';
+const gTagId = 'GTM-PQPZ36F';
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -81,5 +82,6 @@ app.use((err, req, res) => {
 app.locals.componentsServedLocally = componentsServedLocally;
 app.locals.componentsServedOverNgrok = componentsServedOverNgrok;
 app.locals.componentsNotServedLocally = !(componentsServedLocally || componentsServedOverNgrok);
+app.locals.gTagId = gTagId;
 
 module.exports = app;
