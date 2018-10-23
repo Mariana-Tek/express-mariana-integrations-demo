@@ -17,7 +17,7 @@ In order to run this application locally clone this repository and run the follo
 Once you have followed the [setup](#setup) Instructions, run these commands to view and work on the demo site locally.
 
 1. `npm run serve`
-2. browse to [https://localhost:3000/](https://localhost:3000/)
+2. browse to [https://localhost:8080/](https://localhost:8080/)
 
 ### w/Local Web Integrations
 
