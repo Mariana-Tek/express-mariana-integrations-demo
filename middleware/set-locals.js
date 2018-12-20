@@ -1,6 +1,6 @@
 module.exports = function (req, res, next) {
     res.locals.baseUrl = req.baseUrl;
-    res.locals.endpoint = req.params.endpoint ? req.params.endpoint : 'cousteau-r45kxk';
+    res.locals.endpoint = req.params.endpoint ? req.params.endpoint : 'mtdemostable-is7hfd';
 
     if (req.params.versionOrBranch) {
         if (req.params.versionOrBranch.split('.').length === 3) {
