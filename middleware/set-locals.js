@@ -1,6 +1,7 @@
 module.exports = function (req, res, next) {
     res.locals.baseUrl = req.baseUrl;
     res.locals.endpoint = req.params.endpoint ? req.params.endpoint : 'mtdemostable-is7hfd';
+    res.locals.protocol = req.protocol;
 
     if (req.params.versionOrBranch) {
         if (req.params.versionOrBranch.split('.').length === 3) {
