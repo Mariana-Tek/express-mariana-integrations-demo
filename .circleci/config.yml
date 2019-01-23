@@ -1,0 +1,35 @@
+version: 2
+
+jobs:
+    build:
+        docker:
+            - image: circleci/node:8.11.3-browsers
+
+        steps:
+            - run:
+                name: Node Version Check
+                command: node -v
+
+            - run:
+                name: NPM Version Check
+                command: npm -v
+
+            - checkout
+
+            - restore_cache:
+                key: dependency-cache-{{ checksum "package.json" }}
+
+            - run:
+                name: NPM Install
+                command: npm install
+
+            - save_cache:
+                key: dependency-cache
+                paths:
+                  - ~/.cache/npm
+
+            - run: npm test
+
+            - store_artifacts:
+                path: coverage
+                destination: $CIRCLE_ARTIFACTS
