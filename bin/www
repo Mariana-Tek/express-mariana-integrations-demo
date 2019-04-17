@@ -9,8 +9,20 @@ const debug = require('debug')('express-mariana-integrations-demo:server');
 const fs = require('fs');
 const http = require('http');
 const https = require('https');
+const path = require('path');
 
 const environment = process.env.NODE_ENV;
+const isDev = (process.env.NODE_ENV || app.get('env')) === 'development';
+
+if (isDev) {
+    // eslint-disable-next-line global-require
+    require('dotenv').config({
+        path: path.resolve('./', '.env')
+    });
+}
+
+const marianaApiHost = process.env.MARIANA_API_HOST || '';
+const isHostHttp = marianaApiHost.includes('http://');
 
 /**
  * Normalize a port into a number, string, or false.
@@ -44,14 +56,22 @@ app.set('port', port);
  * Create HTTP server.
  */
 
-const httpsOptions = {
-    key: (environment === 'production') ? null : fs.readFileSync( './localhost.key' ),
-    cert: (environment === 'production') ? null : fs.readFileSync( './localhost.cert' ),
-    requestCert: false,
-    rejectUnauthorized: false
-};
+function configureServer() {
+    if (environment === 'production' || (marianaApiHost && isHostHttp)) {
+        return http.createServer(app);
+    }
 
-const server = (environment === 'production') ? http.createServer(app) : https.createServer(httpsOptions, app);
+    const httpsOptions = {
+        key: (environment === 'production') ? null : fs.readFileSync( './localhost.key' ),
+        cert: (environment === 'production') ? null : fs.readFileSync( './localhost.cert' ),
+        requestCert: false,
+        rejectUnauthorized: false
+    };
+
+    return https.createServer(httpsOptions, app);
+}
+
+const server = configureServer();
 
 /**
  * Event listener for HTTP server "error" event.
