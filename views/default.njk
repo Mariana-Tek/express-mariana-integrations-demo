@@ -25,9 +25,9 @@
         {% elif componentsServedOverNgrok %}
             <link id="bindingStyles" rel="stylesheet" href="https://mariana-integrations.ngrok.io/assets/app.css">
         {% elif branch%}
-            <link id="bindingStyles" rel="stylesheet" href="https://mtdev.control.marianatek.com/lib/mariana_web_components.css?branch={{branch}}">
+            <link id="bindingStyles" rel="stylesheet" href="https://integrations.marianatek.com/lib/mariana_web_components.css?branch={{branch}}">
         {% else %}
-            <link id="bindingStyles" rel="stylesheet" href="https://mtdev.control.marianatek.com/lib/mariana_web_components.css?semver={{version}}">
+            <link id="bindingStyles" rel="stylesheet" href="https://integrations.marianatek.com/lib/mariana_web_components.css?semver={{version}}">
         {% endif %}
 
         <link id="overrideStyles" rel="stylesheet" href="/stylesheets/override.css">
@@ -154,9 +154,9 @@
     {% elif componentsServedOverNgrok %}
         <script src="https://mariana-integrations.ngrok.io/assets/app.js" charset="utf-8"></script>
     {% elif branch%}
-        <script src="https://mtdev.control.marianatek.com/lib/mariana_web_components.js?branch={{branch}}" charset="utf-8"></script>
+        <script src="https://integrations.marianatek.com/lib/mariana_web_components.js?branch={{branch}}" charset="utf-8"></script>
     {% else %}
-        <script src="https://mtdev.control.marianatek.com/lib/mariana_web_components.js?semver={{version}}" charset="utf-8"></script>
+        <script src="https://integrations.marianatek.com/lib/mariana_web_components.js?semver={{version}}" charset="utf-8"></script>
     {% endif %}
     <script>
         (function(w, d, s, l, i) {
