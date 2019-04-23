@@ -57,13 +57,18 @@ app.set('port', port);
  */
 
 function configureServer() {
+    /**
+     * Check if this is production (heroku), if so, return an HTTP server.
+     * If not, check if there is an MARIANA_API_HOST envronment variable locally, and if so,
+     * check if that host is http, vs. https.
+     */
     if (environment === 'production' || (marianaApiHost && isHostHttp)) {
         return http.createServer(app);
     }
 
     const httpsOptions = {
-        key: (environment === 'production') ? null : fs.readFileSync( './localhost.key' ),
-        cert: (environment === 'production') ? null : fs.readFileSync( './localhost.cert' ),
+        key: fs.readFileSync( './localhost.key' ) || null,
+        cert: fs.readFileSync( './localhost.cert' ) || null,
         requestCert: false,
         rejectUnauthorized: false
     };
