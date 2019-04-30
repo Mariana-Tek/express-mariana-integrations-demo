@@ -3,9 +3,18 @@ const reqProm = require('request-promise-native');
 const sortBy = require('lodash.sortby');
 
 module.exports = function (req, res, next) {
+    const marianaApiHost = process.env.MARIANA_API_HOST || '';
+    const marianaApiHostExists = !!marianaApiHost && marianaApiHost !== undefined;
+
+    const setUriForRequests = path => (
+        marianaApiHostExists ?
+            `${marianaApiHost}/api/${path}` :
+            `https://${res.locals.endpoint}.marianatek.com/api/${path}`
+    );
+
     const reqOptions = (path) => {
         return {
-            uri: `https://${res.locals.endpoint}.marianatek.com/api/${path}`,
+            uri: setUriForRequests(path),
             headers: {
                 Accept: 'application/vnd.api+json'
             },
