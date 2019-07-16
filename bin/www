@@ -11,30 +11,12 @@ const http = require('http');
 const https = require('https');
 
 const environment = process.env.NODE_ENV;
-
-/**
- * Normalize a port into a number, string, or false.
- */
-
-function normalizePort(val) {
-    const port = parseInt(val, 10);
-
-    if (isNaN(port)) {
-        // named pipe
-        return val;
-    }
-
-    if (port >= 0) {
-        // port number
-        return port;
-    }
-
-    return false;
-}
+const apiHost = process.env.MARIANA_API_HOST;
 
 /**
  * Get port from environment and store in Express.
  */
+const normalizePort = require('../helpers/normalize-port');
 
 const port = normalizePort(process.env.PORT || '8080');
 
@@ -51,7 +33,9 @@ const httpsOptions = {
     rejectUnauthorized: false
 };
 
-const server = (environment === 'production') ? http.createServer(app) : https.createServer(httpsOptions, app);
+const server = (environment === 'production') || apiHost.includes('http://')
+    ? http.createServer(app)
+    : https.createServer(httpsOptions, app);
 
 /**
  * Event listener for HTTP server "error" event.

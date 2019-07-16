@@ -19,9 +19,9 @@ const componentsServedLocally = process.argv[2] === 'local';
 const componentsServedOverNgrok = process.argv[2] === 'ngrok';
 const gTagId = 'GTM-PQPZ36F';
 
-// view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'njk');
+const apiHost = process.env.MARIANA_API_HOST;
+const isComponentsUnsecure = componentsServedLocally && apiHost.includes('http://');
+const normalizePort = require('./helpers/normalize-port');
 
 app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
@@ -85,8 +85,17 @@ app.use((err, req, res) => {
 });
 
 app.locals.componentsServedLocally = componentsServedLocally;
+app.locals.componentsUnsecure = isComponentsUnsecure;
 app.locals.componentsServedOverNgrok = componentsServedOverNgrok;
 app.locals.componentsNotServedLocally = !(componentsServedLocally || componentsServedOverNgrok);
 app.locals.gTagId = gTagId;
+
+app.listen(app.get('port'), () => {
+    const port = normalizePort(process.env.PORT || '8080');
+    const serverLocation = `localhost:${port}`;
+
+    console.log(`Node app is running at http://${serverLocation}`);
+    console.log(`Visit ${isComponentsUnsecure ? 'http' : 'https'}://${serverLocation} to view the integrations application`);
+});
 
 module.exports = app;

@@ -5,5 +5,6 @@ public/stylesheets/*.css*
 localhost.cert
 localhost.key
 
+.env
 .npmrc
 .npm-debug.*
