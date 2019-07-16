@@ -16,22 +16,21 @@
     "body-parser": "~1.18.2",
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.9",
-    "express": "~4.15.5",
-    "express-nunjucks": "^2.2.3",
+    "express": "~4.17.1",
     "lodash.camelcase": "^4.3.0",
     "lodash.sortby": "^4.7.0",
-    "morgan": "~1.9.0",
-    "node-sass-middleware": "0.9.8",
-    "nunjucks": "^3.0.1",
-    "request": "^2.83.0",
-    "request-promise-native": "^1.0.5",
+    "morgan": "~1.9.1",
+    "node-sass-middleware": "0.11.0",
+    "nunjucks": "^3.2.0",
+    "request": "^2.88.0",
+    "request-promise-native": "^1.0.7",
     "serve-favicon": "~2.4.5"
   },
   "devDependencies": {
-    "eslint": "^4.9.0",
+    "eslint": "^6.0.1",
     "eslint-config-airbnb-base": "^11.3.2",
     "eslint-config-mariana": "git+ssh://git@github.com/Mariana-Tek/eslint-config-mariana.git#v1.0.1",
     "eslint-plugin-import": "^2.8.0",
-    "nodemon": "^1.12.1"
+    "nodemon": "^1.19.1"
   }
 }

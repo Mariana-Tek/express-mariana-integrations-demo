@@ -1,7 +1,7 @@
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const express = require('express');
-const expressNunjucks = require('express-nunjucks');
+const nunjucks = require('nunjucks');
 const favicon = require('serve-favicon');
 const logger = require('morgan');
 const makeRequests = require('./middleware/make-requests');
@@ -23,11 +23,6 @@ const gTagId = 'GTM-PQPZ36F';
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'njk');
 
-const njk = expressNunjucks(app, { // eslint-disable-line no-unused-vars
-    watch: isDev,
-    noCache: isDev
-});
-
 app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
@@ -40,6 +35,16 @@ app.use(sassMiddleware({
     sourceMap: isDev
 }));
 app.use(express.static(path.join(__dirname, 'public')));
+
+// view engine setup
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'njk');
+
+nunjucks.configure(path.join(__dirname, 'views'), {
+    watch: isDev,
+    noCache: isDev,
+    express: app
+});
 
 const localScriptMountPaths = [
     '/default/',
