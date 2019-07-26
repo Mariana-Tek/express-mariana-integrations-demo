@@ -9,44 +9,15 @@ const debug = require('debug')('express-mariana-integrations-demo:server');
 const fs = require('fs');
 const http = require('http');
 const https = require('https');
-const path = require('path');
 
 const environment = process.env.NODE_ENV;
-const isDev = (process.env.NODE_ENV || app.get('env')) === 'development';
-
-if (isDev) {
-    // eslint-disable-next-line global-require
-    require('dotenv').config({
-        path: path.resolve('./', '.env')
-    });
-}
-
-const marianaApiHost = process.env.MARIANA_API_HOST || '';
-const isHostHttp = marianaApiHost.includes('http://');
-
-/**
- * Normalize a port into a number, string, or false.
- */
-
-function normalizePort(val) {
-    const port = parseInt(val, 10);
-
-    if (isNaN(port)) {
-        // named pipe
-        return val;
-    }
-
-    if (port >= 0) {
-        // port number
-        return port;
-    }
-
-    return false;
-}
-
+const apiHost = process.env.MARIANA_API_HOST;
+const componentsServedLocally = process.argv[2] === 'local';
+const isComponentsUnsecure = componentsServedLocally && (apiHost && apiHost.includes('http://'));
 /**
  * Get port from environment and store in Express.
  */
+const normalizePort = require('../helpers/normalize-port');
 
 const port = normalizePort(process.env.PORT || '8080');
 
@@ -56,27 +27,17 @@ app.set('port', port);
  * Create HTTP server.
  */
 
-function configureServer() {
-    /**
-     * Check if this is production (heroku), if so, return an HTTP server.
-     * If not, check if there is an MARIANA_API_HOST envronment variable locally, and if so,
-     * check if that host is http, vs. https.
-     */
-    if (environment === 'production' || (marianaApiHost && isHostHttp)) {
-        return http.createServer(app);
-    }
+const serveUnsecurely = (environment === 'production') || isComponentsUnsecure;
+const httpsOptions = {
+    key: serveUnsecurely ? null : fs.readFileSync( './localhost.key' ),
+    cert: serveUnsecurely ? null : fs.readFileSync( './localhost.cert' ),
+    requestCert: false,
+    rejectUnauthorized: false
+};
 
-    const httpsOptions = {
-        key: fs.readFileSync( './localhost.key' ) || null,
-        cert: fs.readFileSync( './localhost.cert' ) || null,
-        requestCert: false,
-        rejectUnauthorized: false
-    };
-
-    return https.createServer(httpsOptions, app);
-}
-
-const server = configureServer();
+const server = serveUnsecurely
+    ? http.createServer(app)
+    : https.createServer(httpsOptions, app);
 
 /**
  * Event listener for HTTP server "error" event.
