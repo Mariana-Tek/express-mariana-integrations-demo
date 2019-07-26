@@ -1,10 +1,10 @@
 node_modules
+.vscode
 public/stylesheets/*.css*
 
 localhost.cert
 localhost.key
 
+.env
 .npmrc
 .npm-debug.*
-package-lock.json
-.env
