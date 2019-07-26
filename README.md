@@ -23,6 +23,13 @@ Once you have followed the [setup](#setup) Instructions, run these commands to v
 
 If you would like to use this application to work on the [Mariana Integrations](https://github.com/Mariana-Tek/ember-mariana-integrations/) follow the instructions on the [web integrations](https://github.com/Mariana-Tek/ember-mariana-integrations/#running--development) to serve the project locally. Then instead of using the command `npx nf start -j Procfile.serve` use `npx nf start -j Procfile.serve.local`
 
+We also support running the application with a local instance of the API. You can add these values to a local .env file in the root of the project.
+
+```bash
+MARIANA_ENDPOINT={tenant}
+MARIANA_API_HOST={url to your local api}
+```
+
 ### w/For Device Testing
 
 If you would like to use this application to test on a device while serving the [Mariana Integrations](https://github.com/Mariana-Tek/ember-mariana-integrations/) locally. Then instead of using the command `npx nf start -j Procfile.serve` use `npx nf start -j Procfile.serve.ngrok`
