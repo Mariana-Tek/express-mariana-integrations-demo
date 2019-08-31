@@ -1,0 +1,19 @@
+version: '3.6'
+services:
+  express-web-integrations-v3:
+    networks:
+      - mariana
+    build:
+      context: .
+      dockerfile: "Dockerfile.selenium"
+    ports:
+     - "5000:5000"
+    environment:
+     - MARIANA_ENDPOINT=selenium_wi_v3
+     - MARIANA_API_HOST=http://django:8000
+     - SELENIUM_MODE=true
+    tty: true
+
+networks:
+  mariana:
+    external: true

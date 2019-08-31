@@ -22,6 +22,15 @@ const gTagId = 'GTM-PQPZ36F';
 const apiHost = process.env.MARIANA_API_HOST;
 const isComponentsUnsecure = componentsServedLocally && (apiHost && apiHost.includes('http://'));
 const normalizePort = require('./helpers/normalize-port');
+const httpProtocol = isComponentsUnsecure ? 'http' : 'https';
+
+const inCI = process.env.CIRCLECI == 'true';
+const seleniumMode = process.env.SELENIUM_MODE == 'true';
+const localEmberDomain = inCI && seleniumMode
+    ? 'web-integrations-ember'
+    : !inCI && seleniumMode
+        ? 'host.docker.internal'
+        : 'localhost';
 
 app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
@@ -88,6 +97,8 @@ app.locals.componentsServedLocally = componentsServedLocally;
 app.locals.componentsUnsecure = isComponentsUnsecure;
 app.locals.componentsServedOverNgrok = componentsServedOverNgrok;
 app.locals.componentsNotServedLocally = !(componentsServedLocally || componentsServedOverNgrok);
+app.locals.localCSSHref = `${httpProtocol}://${localEmberDomain}:4200/assets/app.css`;
+app.locals.localSourceHref = `${httpProtocol}://${localEmberDomain}:4200/assets/app.js`;
 app.locals.gTagId = gTagId;
 
 app.listen(app.get('port'), () => {
