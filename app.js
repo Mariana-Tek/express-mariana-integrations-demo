@@ -22,15 +22,9 @@ const gTagId = 'GTM-PQPZ36F';
 const apiHost = process.env.MARIANA_API_HOST;
 const isComponentsUnsecure = componentsServedLocally && (apiHost && apiHost.includes('http://'));
 const normalizePort = require('./helpers/normalize-port');
-const httpProtocol = isComponentsUnsecure ? 'http' : 'https';
+const protocol = isComponentsUnsecure ? 'http' : 'https';
 
-const inCI = process.env.CIRCLECI == 'true';
-const seleniumMode = process.env.SELENIUM_MODE == 'true';
-const localEmberDomain = inCI && seleniumMode
-    ? 'web-integrations-ember'
-    : !inCI && seleniumMode
-        ? 'host.docker.internal'
-        : 'localhost';
+const localEmberDomain = process.env.LOCAL_EMBER_DOMAIN || 'localhost';
 
 app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
@@ -97,14 +91,13 @@ app.locals.componentsServedLocally = componentsServedLocally;
 app.locals.componentsUnsecure = isComponentsUnsecure;
 app.locals.componentsServedOverNgrok = componentsServedOverNgrok;
 app.locals.componentsNotServedLocally = !(componentsServedLocally || componentsServedOverNgrok);
-app.locals.localCSSHref = `${httpProtocol}://${localEmberDomain}:4200/assets/app.css`;
-app.locals.localSourceHref = `${httpProtocol}://${localEmberDomain}:4200/assets/app.js`;
+app.locals.localCSSHref = `${protocol}://${localEmberDomain}:4200/assets/app.css`;
+app.locals.localScriptSource = `${protocol}://${localEmberDomain}:4200/assets/app.js`;
 app.locals.gTagId = gTagId;
 
 app.listen(app.get('port'), () => {
     const port = normalizePort(process.env.PORT || '8080');
     const serverLocation = `localhost:${port}`;
-    const protocol = `${isComponentsUnsecure ? 'http' : 'https'}`;
 
     console.log(`Node app is running at ${protocol}://${serverLocation}`);
     console.log(`Visit ${protocol}://${serverLocation} to view the integrations application`);

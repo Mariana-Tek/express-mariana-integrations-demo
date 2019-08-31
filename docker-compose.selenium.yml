@@ -1,6 +1,6 @@
 version: '3.6'
 services:
-  express-web-integrations-v3:
+  web-integrations-express:
     networks:
       - mariana
     build:
@@ -12,6 +12,7 @@ services:
      - MARIANA_ENDPOINT=selenium_wi_v3
      - MARIANA_API_HOST=http://django:8000
      - SELENIUM_MODE=true
+     - LOCAL_EMBER-DOMAIN=web-integrations-ember
     tty: true
 
 networks:

@@ -150,7 +150,7 @@
     </script>
 
     {% if componentsServedLocally %}
-        <script src="{{localSourceHref}}" charset="utf-8"></script>
+        <script src="{{localScriptSource}}" charset="utf-8"></script>
     {% elif componentsServedOverNgrok %}
         <script src="https://mariana-integrations.ngrok.io/assets/app.js" charset="utf-8"></script>
     {% elif branch%}
