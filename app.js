@@ -8,6 +8,7 @@ const makeRequests = require('./middleware/make-requests');
 const path = require('path');
 const sassMiddleware = require('node-sass-middleware');
 const setLocals = require('./middleware/set-locals');
+const normalizePort = require('./helpers/normalize-port');
 
 // routes
 const index = require('./routes/index');
@@ -21,7 +22,6 @@ const gTagId = 'GTM-PQPZ36F';
 
 const apiHost = process.env.MARIANA_API_HOST;
 const isComponentsUnsecure = componentsServedLocally && (apiHost && apiHost.includes('http://'));
-const normalizePort = require('./helpers/normalize-port');
 const protocol = isComponentsUnsecure ? 'http' : 'https';
 
 const localEmberDomain = process.env.LOCAL_EMBER_DOMAIN || 'localhost';
