@@ -11,7 +11,6 @@ services:
     environment:
      - MARIANA_ENDPOINT=selenium_wi_v3
      - MARIANA_API_HOST=http://django:8000
-     - SELENIUM_MODE=true
      - LOCAL_EMBER-DOMAIN=web-integrations-ember
     tty: true
 
