@@ -21,11 +21,7 @@
         <link id="siteStyles" rel="stylesheet" href="/stylesheets/style.css">
 
         {% if componentsServedLocally %}
-            {% if componentsUnsecure %}
-                <link id="bindingStyles" rel="stylesheet" href="http://localhost:4200/assets/app.css">
-            {% else %}
-                <link id="bindingStyles" rel="stylesheet" href="https://localhost:4200/assets/app.css">
-            {% endif %}
+            <link id="bindingStyles" rel="stylesheet" href="{{localCSSHref}}">
         {% elif componentsServedOverNgrok %}
             <link id="bindingStyles" rel="stylesheet" href="https://mariana-integrations.ngrok.io/assets/app.css">
         {% elif branch%}
@@ -154,11 +150,7 @@
     </script>
 
     {% if componentsServedLocally %}
-        {% if componentsUnsecure %}
-            <script src="http://localhost:4200/assets/app.js" charset="utf-8"></script>
-        {% else %}
-            <script src="https://localhost:4200/assets/app.js" charset="utf-8"></script>
-        {% endif %}
+        <script src="{{localScriptSource}}" charset="utf-8"></script>
     {% elif componentsServedOverNgrok %}
         <script src="https://mariana-integrations.ngrok.io/assets/app.js" charset="utf-8"></script>
     {% elif branch%}

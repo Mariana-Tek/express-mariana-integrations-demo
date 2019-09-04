@@ -1,0 +1,10 @@
+FROM node:8.10.0
+
+WORKDIR /project
+
+ADD . /project
+
+RUN npm install
+ENTRYPOINT ["/bin/bash", "-c", "npm rebuild node-sass && npx nf start -j Procfile.serve.local"]
+
+EXPOSE 5000
