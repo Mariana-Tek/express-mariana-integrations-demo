@@ -2,7 +2,7 @@ const setEndpoint = endpointArg => {
     const marianaEndpoint = process.env.MARIANA_ENDPOINT;
     const marianaEndpointExists = !!marianaEndpoint;
 
-    return marianaEndpointExists ? marianaEndpoint : (endpointArg || 'mtdemostable-is7hfd');
+    return marianaEndpointExists ? marianaEndpoint : (endpointArg || 'cousteau-r45kxk');
 };
 
 module.exports = function (req, res, next) {
