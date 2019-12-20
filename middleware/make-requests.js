@@ -53,6 +53,7 @@ module.exports = function (req, res, next) {
             res.locals.siteTitle = response.data[0].attributes.name;
         })
         .catch(error => {
+            res.locals.siteTitle = '';
             console.error(error);
         });
 
@@ -62,6 +63,7 @@ module.exports = function (req, res, next) {
         })
         .catch(error => {
             console.error(error);
+            return [];
         });
 
     Promise.all([reqTenantBrand, reqTenant, reqLocations])
