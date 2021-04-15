@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "engines": {
-    "node": "8.10.0"
+    "node": "10.15.3"
   },
   "scripts": {
     "serve": "nodemon tasks/serve.js",
